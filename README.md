@@ -387,7 +387,13 @@ Running this command will open a new browser window
 
 Create new file called wsgi.py inside bootcamp folder with following contents:
 
+    import os
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "bootcamp.settings")
+
+    # This application object is used by the development server
+    # as well as any WSGI server configured to use this file.
+    import django.core.handlers.wsgi
+    application = django.core.handlers.wsgi.WSGIHandler()
 
 ## Commit your code (we're almost there)
 
