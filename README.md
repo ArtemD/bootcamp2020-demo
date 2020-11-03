@@ -397,6 +397,13 @@ Create new file called wsgi.py inside bootcamp folder with following contents:
 
     pip freeze >requirements.txt
 
+# Set correct buildpack
+
+    heroku buildpacks:clear if necessary
+    heroku buildpacks:set https://github.com/timanovsky/subdir-heroku-buildpack
+    heroku buildpacks:add heroku/python
+    heroku config:set PROJECT_PATH=bootcamp/ pointing to what you want to be a project root.
+
 ## Commit your code (we're almost there)
 
     git add *
@@ -408,3 +415,5 @@ Create new file called wsgi.py inside bootcamp folder with following contents:
 ## SUCCESS
 
 Now you should be able to see your new shiney web app url: https://dl.dropboxusercontent.com/s/ohn0ux5jjs22952/Code_2020-11-03_22-43-18.png
+
+## Next time...databases, heroku, security...oh my! :)
