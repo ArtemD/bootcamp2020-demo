@@ -402,7 +402,7 @@ Create new file called wsgi.py inside bootcamp folder with following contents:
     heroku buildpacks:clear if necessary
     heroku buildpacks:set https://github.com/timanovsky/subdir-heroku-buildpack
     heroku buildpacks:add heroku/python
-    heroku config:set PROJECT_PATH=bootcamp/ pointing to what you want to be a project root.
+    heroku config:set PROJECT_PATH=bootcamp/
 
 ## Commit your code (we're almost there)
 
