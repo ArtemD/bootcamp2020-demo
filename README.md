@@ -382,7 +382,12 @@ Running this command will open a new browser window
 ## Create Heroku instance
 
     heroku create
-    heroku buildpacks:set heroku/python # sets heroku instance to python
+
+## Create WSGI file
+
+Create new file called wsgi.py inside bootcamp folder with following contents:
+
+    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "bootcamp.settings")
 
 ## Commit your code (we're almost there)
 
@@ -391,5 +396,3 @@ Running this command will open a new browser window
     git push
     git push heroku main
     # Prey and cross your fingers!
-
-#
