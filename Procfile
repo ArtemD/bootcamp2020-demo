@@ -1,1 +1,1 @@
-web: gunicorn bootcamp.wsgi
+web: gunicorn bootcamp.bootcamp.wsgi
