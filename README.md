@@ -379,4 +379,17 @@ Then add the following to the bottom of settings.py:
 
 Running this command will open a new browser window
 
+## Create Heroku instance
+
+    heroku create
+    heroku buildpacks:set heroku/python # sets heroku instance to python
+
+## Commit your code (we're almost there)
+
+    git add *
+    git commit -av -m "Initial real commit"
+    git push
+    git push heroku main
+    # Prey and cross your fingers!
+
 #
