@@ -393,6 +393,10 @@ Create new file called wsgi.py inside bootcamp folder with following contents:
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "bootcamp.settings")
     application = get_wsgi_application()
 
+## Create requirements.txt for Heroku
+
+    pip freeze >requirements.txt
+
 ## Commit your code (we're almost there)
 
     git add *
