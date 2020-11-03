@@ -1,0 +1,62 @@
+<html>
+<head>
+    <title>Our simple Django application</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jq-3.3.1/jszip-2.5.0/dt-1.10.22/b-1.6.5/b-html5-1.6.5/fh-3.1.7/r-2.2.6/sc-2.0.3/sb-1.0.0/sp-1.2.1/sl-1.3.1/datatables.min.css"/>
+ 
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/jq-3.3.1/jszip-2.5.0/dt-1.10.22/b-1.6.5/b-html5-1.6.5/fh-3.1.7/r-2.2.6/sc-2.0.3/sb-1.0.0/sp-1.2.1/sl-1.3.1/datatables.min.js"></script>
+</head>
+<body>
+
+    <h1>List of registered companies of Finland</h1>
+
+    <table id="companies" class="display">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Business ID</th>
+                <th>Company form</th>
+                <th>Business line code</th>
+                <th>Registration date</th>
+                <th>City</th>
+                <th>Address</th>
+                <th>Postcode</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Row 1 Data 1</td>
+                <td>Row 1 Data 2</td>
+            </tr>
+            <tr>
+                <td>Row 2 Data 1</td>
+                <td>Row 2 Data 2</td>
+            </tr>
+        </tbody>
+    </table>
+
+<script>
+$(document).ready(function() {
+    $('#companies').DataTable( {
+        "ajax": {
+            "url": "/api/?format=json",
+            "dataSrc": ""
+        },
+        "pageLength": 20,
+        "columns": [
+            { "data": "name" },
+            { "data": "business_id" },
+            { "data": "company_form" },
+            { "data": "business_line" },
+            { "data": "registration_date" },
+            { "data": "city" },
+            { "data": "address" },
+            { "data": "postcode" }
+        ]
+    } );
+} );
+</script>
+
+</body>
+</html>
