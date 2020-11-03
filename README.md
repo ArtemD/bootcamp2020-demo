@@ -404,3 +404,7 @@ Create new file called wsgi.py inside bootcamp folder with following contents:
     git push
     git push heroku main
     # Prey and cross your fingers!
+
+## SUCCESS
+
+Now you should be able to see your new shiney web app url: https://dl.dropboxusercontent.com/s/ohn0ux5jjs22952/Code_2020-11-03_22-43-18.png
