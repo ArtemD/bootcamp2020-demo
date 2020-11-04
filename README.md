@@ -113,6 +113,7 @@ Make sure your INSTALLED_APPS section looks like this:
 - Create new directory bootcamp/companydata/management/commands and create new file within that directory csv2db.py
 - Insert code below into csv2db.py
 
+```python
     from django.core.management.base import BaseCommand, CommandError
     from companydata.models import Company
     from django.conf import settings
@@ -146,6 +147,7 @@ Make sure your INSTALLED_APPS section looks like this:
 
             pbar.close()
             cprint(f'\nProcessed {line_count} lines :)', 'green', attrs=['reverse'])
+```
 
 ## Run migrate command to create database tables
 
