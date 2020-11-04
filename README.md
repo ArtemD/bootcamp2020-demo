@@ -34,7 +34,7 @@ This project is part of programming Boot Camp 2020 course.
 
 ## Make sure to add virtualenv as correct path in Virtual Studio Code
 
-- Settings: https://dl.dropboxusercontent.com/s/o8jh3cdp1rr50f7/Code_2020-11-03_19-44-47.png
+- Settings: https://dl.dropboxusercontent.com/s/i2164uoo5qbm7ct/2020-11-04_10-43-30.png
 
 ## Check that Django is installed correctly
 
