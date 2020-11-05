@@ -7,22 +7,24 @@ import csv
 import os
 os.system('color')
 from tqdm import tqdm
+from django.db.models import Q
 
 class Command(BaseCommand):
     help = "Import data from CSV file to the database"
 
     def handle(self, *args, **options):
         
-        cprint(f'\nProcessing CSV file, grab a beer!', 'green', attrs=['reverse'])
+        cprint(f'\nProcessing CSV file, grab a coffee!', 'green', attrs=['reverse'])
 
-        num_lines = sum(1 for line in open('prhdata.csv'))
+        num_lines = sum(1 for line in open('R:\prhdata.csv'))
         with tqdm(total=num_lines) as pbar:
             with open('prhdata.csv', encoding='utf-8') as csv_file:
                 csv_reader = csv.reader(csv_file, delimiter=';')
                 line_count = 0
                 for row in csv_reader:
                     if line_count != 0:
-                        Company.objects.create(name=row[0], business_id=row[1], company_form=row[2], business_line=row[3],
+                        if Company.objects.filter(Q(name=row[0]) | Q(business_id=row[1])).count()==0:
+                            Company.objects.create(name=row[0], business_id=row[1], company_form=row[2], business_line=row[3],
                                                 registration_date=row[5], address=row[6], postcode=row[7], city=row[8])
                         line_count += 1
                         pbar.update(1)
