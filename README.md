@@ -384,20 +384,6 @@ Running this command will open a new browser window
 
     heroku create
 
-## Create WSGI file
-
-Create new file called wsgi.py inside bootcamp folder with following contents:
-
-    import os
-    from django.core.wsgi import get_wsgi_application
-
-    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "bootcamp.settings")
-    application = get_wsgi_application()
-
-## Create requirements.txt for Heroku
-
-    pip freeze >requirements.txt
-
 # Set correct buildpack
 
     heroku buildpacks:clear if necessary
