@@ -19,8 +19,10 @@ This project is part of programming Boot Camp 2020 course.
 
 ## Creating virtual enviroment and installing Django
 
-```shell
+```bash
+
     pipenv install django
+
 ```
 
 ## Install some other cool stuff
