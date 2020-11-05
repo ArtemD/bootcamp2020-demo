@@ -475,17 +475,29 @@ If there is no mention of postgres addon you can provision it using following co
 heroku addons:create heroku-postgresql:hobby-dev
 ```
 
+## Create a free account and initialize a free database
+
+![Setting up SQL]( https://dl.dropboxusercontent.com/s/ccfd0aiisrg2988/2020-11-05_20-40-07.gif "Setting up SQL")
+
 ## Connecting to Heroku database
 
 ```console
 pipenv install dj-database-url
+heroku config:set DBPASS='password you got from elephantsql.com'
 ```
 
 Then add the following to the bottom of settings.py:
 
 ```python
+# Adding support for database urls
 import dj_database_url
-DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
+import os
+
+if 'DBPASS' in os.environ:
+    DATABASES['default'] = dj_database_url.config(f'postgres://amvmzgrd:{os.environ['DBPASS']}@rogue.db.elephantsql.com:5432/amvmzgrd', conn_max_age=600, ssl_require=True)
+else:
+    DATABASES['default'] = dj_database_url.config(f'sqlite:///{BASE_DIR}/db.sqlite3')
 ```
 
-This will parse the values of the DATABASE_URL environment variable and convert them to something Django can understand.
+Make sure to use database from EelephantSQL and replace password with {os.environ['DBPASS']}.
+
