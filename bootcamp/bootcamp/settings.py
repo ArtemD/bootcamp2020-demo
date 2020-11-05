@@ -126,7 +126,7 @@ STATIC_URL = '/static/'
 # Activate Django-Heroku.
 django_heroku.settings(locals())
 
-
+"""
 # Adding support for database urls
 import dj_database_url
 import os
@@ -135,4 +135,5 @@ if 'DBPASS' in os.environ:
     DBPASS = os.environ['DBPASS']
     DATABASES['default'] = dj_database_url.config(default=f'postgres://amvmzgrd:{DBPASS}@rogue.db.elephantsql.com:5432/amvmzgrd', conn_max_age=600, ssl_require=True)
 else:
-    DATABASES['default'] = dj_database_url.config(default=f'sqlite:///{BASE_DIR}/db.sqlite3')
+"""
+DATABASES['default'] = dj_database_url.config(default=f'sqlite:///{BASE_DIR}/db.sqlite3')
