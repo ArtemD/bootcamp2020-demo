@@ -456,6 +456,8 @@ Now you should be able to see your new shiney web app url: https://dl.dropboxuse
 
 ## Create a free account and initialize a free database
 
+Register a free account over at elephantsql.com
+
 ![Setting up SQL]( https://dl.dropboxusercontent.com/s/ccfd0aiisrg2988/2020-11-05_20-40-07.gif "Setting up SQL")
 
 ## Connecting to Heroku database
