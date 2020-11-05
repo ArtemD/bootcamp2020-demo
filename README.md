@@ -480,8 +480,10 @@ Make sure to use database URL from EelephantSQL
 
 Now with PostgreSQL database connection added create migrations, run migrate and push to heroku. In addition to this you have to create superuser again.
 
-´´´python
+```console
 python manage.py makemigrations && python manage.py migrate
 python manage.py createsuperuser
+git add *
+git commit -avm 'PostgreSQL enabled Django'
 git push heroku
-´´´
+```
