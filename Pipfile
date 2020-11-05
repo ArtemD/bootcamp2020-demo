@@ -7,6 +7,7 @@ verify_ssl = true
 
 [packages]
 dj-database-url = "*"
+django-environ = "*"
 
 [requires]
 python_version = "3.7"
