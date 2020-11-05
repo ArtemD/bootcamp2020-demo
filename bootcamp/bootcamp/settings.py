@@ -126,9 +126,12 @@ STATIC_URL = '/static/'
 # Activate Django-Heroku.
 django_heroku.settings(locals())
 
+
+import dj_database_url
+
 """
 # Adding support for database urls
-import dj_database_url
+
 import os
 
 if 'DBPASS' in os.environ:
