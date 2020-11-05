@@ -483,7 +483,6 @@ heroku addons:create heroku-postgresql:hobby-dev
 
 ```console
 pipenv install dj-database-url
-heroku config:set DBPASS='password you got from elephantsql.com'
 ```
 
 Then add the following to the bottom of settings.py:
@@ -491,13 +490,9 @@ Then add the following to the bottom of settings.py:
 ```python
 # Adding support for database urls
 import dj_database_url
-import os
 
-if 'DBPASS' in os.environ:
-    DATABASES['default'] = dj_database_url.config(f'postgres://amvmzgrd:{os.environ['DBPASS']}@rogue.db.elephantsql.com:5432/amvmzgrd', conn_max_age=600, ssl_require=True)
-else:
-    DATABASES['default'] = dj_database_url.config(f'sqlite:///{BASE_DIR}/db.sqlite3')
+DATABASES['default'] = dj_database_url.config(f'postgres://amvmzgrd:PASSWORD@rogue.db.elephantsql.com:5432/amvmzgrd', conn_max_age=600, ssl_require=True)
+#DATABASES['default'] = dj_database_url.config(f'sqlite:///{BASE_DIR}/db.sqlite3')
 ```
 
-Make sure to use database from EelephantSQL and replace password with {os.environ['DBPASS']}.
-
+Make sure to use database URL from EelephantSQL
