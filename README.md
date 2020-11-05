@@ -456,6 +456,8 @@ Now you should be able to see your new shiney web app url: https://dl.dropboxuse
 
 ## Adding database functionality to Heroku instance
 
+Check if postgres database addons is already enabled:
+
 ```console
 $ heroku addons
 
@@ -466,3 +468,24 @@ heroku-postgresql (postgresql-silhouetted-62724)  hobby-dev  free   created
 
 The table above shows add-ons and the attachments to the current app (bc2020) or other apps.
 ```
+
+If there is no mention of postgres addon you can provision it using following command:
+
+```console
+heroku addons:create heroku-postgresql:hobby-dev
+```
+
+## Connecting to Heroku database
+
+```console
+pipenv install dj-database-url
+```
+
+Then add the following to the bottom of settings.py:
+
+```python
+import dj_database_url
+DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
+```
+
+This will parse the values of the DATABASE_URL environment variable and convert them to something Django can understand.
