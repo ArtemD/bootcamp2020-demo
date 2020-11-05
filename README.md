@@ -454,27 +454,6 @@ git push heroku main
 
 Now you should be able to see your new shiney web app url: https://dl.dropboxusercontent.com/s/ohn0ux5jjs22952/Code_2020-11-03_22-43-18.png
 
-## Adding database functionality to Heroku instance
-
-Check if postgres database addons is already enabled:
-
-```console
-$ heroku addons
-
-Add-on                                            Plan       Price  State  
-────────────────────────────────────────────────  ─────────  ─────  ───────
-heroku-postgresql (postgresql-silhouetted-62724)  hobby-dev  free   created
- └─ as DATABASE
-
-The table above shows add-ons and the attachments to the current app (bc2020) or other apps.
-```
-
-If there is no mention of postgres addon you can provision it using following command:
-
-```console
-heroku addons:create heroku-postgresql:hobby-dev
-```
-
 ## Create a free account and initialize a free database
 
 ![Setting up SQL]( https://dl.dropboxusercontent.com/s/ccfd0aiisrg2988/2020-11-05_20-40-07.gif "Setting up SQL")
