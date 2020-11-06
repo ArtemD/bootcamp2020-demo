@@ -11,42 +11,73 @@ This project is part of programming Boot Camp 2020 course.
 
 ## Creating public key and adding it to GitHub
 
-- https://www.inmotionhosting.com/support/website/ssh/how-to-add-ssh-keys-to-your-github-account/
+- Read more about the process here: https://www.inmotionhosting.com/support/website/ssh/how-to-add-ssh-keys-to-your-github-account/
+
+### Creating SSH keys
+
+![](https://dl.dropboxusercontent.com/s/q4ragwf4rwib80r/2020-11-06_17-45-02.gif)
+
+### Adding public key to GitHub
+
+![](https://dl.dropboxusercontent.com/s/o7ojhvy5t54tf6d/2020-11-06_17-46-43.gif)
+
 
 ## Installing pipenv
 
-- https://pypi.org/project/pipenv/
+![](https://dl.dropboxusercontent.com/s/krt7gr0fow6rsg7/2020-11-06_17-50-07.gif)
+
+- Read more about pipenv: https://realpython.com/pipenv-guide/
 
 ## Creating virtual enviroment and installing Django
+
+![](https://dl.dropboxusercontent.com/s/5y6fxt0n57jpgbe/2020-11-06_17-57-40.gif)
+
 
 ```console
 pipenv install django
 ```
 
+- Read more about Django: https://djangostars.com/blog/why-we-use-django-framework/
+
 ## Install some other cool stuff
+
+![](https://dl.dropboxusercontent.com/s/hy7rzwp1zfv6tok/2020-11-06_18-00-57.gif)
 
 ```console
 pipenv install tqdm
 pipenv install termcolor
 ```
 
+- Read more about tqdm here: https://github.com/tqdm/tqdm
+- Read more about termcolor here: https://pypi.org/project/termcolor/
+
 ## Entering virtualenv
+
+![](https://dl.dropboxusercontent.com/s/1o084zxqyqmo3ih/2020-11-06_18-02-18.gif)
+
 
 ```console
 pipenv shell
 ```
 
-**How to run Python commands without entering pipenv shell?**
+- You can read more about pipenv shell here: https://pipenv-fork.readthedocs.io/en/latest/basics.html
+
 
 ## Make sure to add virtualenv as correct path in Virtual Studio Code
 
-- Settings: https://dl.dropboxusercontent.com/s/i2164uoo5qbm7ct/2020-11-04_10-43-30.png
+![](https://dl.dropboxusercontent.com/s/nsi8if5crsx01pp/2020-11-06_18-05-07.gif)
+
+- You can read more about Visual Studio Code Python settings here: https://olav.it/2017/03/04/pipenv-visual-studio-code/
 
 ## Check that Django is installed correctly
+
+![](https://dl.dropboxusercontent.com/s/w0xpv7jkinnq00d/2020-11-06_18-07-30.gif)
 
 ```console
 python -m django --version
 ```
+
+- If you're having issues with Django installation, please look into excellent installation documentation: https://docs.djangoproject.com/en/3.1/topics/install/
 
 ## Create new Django application
 
