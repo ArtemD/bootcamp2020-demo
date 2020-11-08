@@ -13,6 +13,7 @@ django = "*"
 tqdm = "*"
 termcolor = "*"
 django-heroku = "*"
+djangorestframework = "*"
 
 [requires]
 python_version = "3.7"
