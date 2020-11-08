@@ -15,22 +15,22 @@ This project is part of programming Boot Camp 2020 course.
 
 ### Creating SSH keys
 
-![](https://dl.dropboxusercontent.com/s/q4ragwf4rwib80r/2020-11-06_17-45-02.gif)
+![](https://dl.dropboxusercontent.com/s/x5i546jgsd3go8x/2020-11-08_10-39-27.gif)
 
 ### Adding public key to GitHub
 
-![](https://dl.dropboxusercontent.com/s/o7ojhvy5t54tf6d/2020-11-06_17-46-43.gif)
+![](https://dl.dropboxusercontent.com/s/g5lfcqr08zmfdbk/2020-11-08_10-56-32.gif)
 
 
 ## Installing pipenv
 
-![](https://dl.dropboxusercontent.com/s/krt7gr0fow6rsg7/2020-11-06_17-50-07.gif)
+![](https://dl.dropboxusercontent.com/s/ljxlumw0k0p57wc/2020-11-08_10-42-09.gif)
 
 - Read more about pipenv: https://realpython.com/pipenv-guide/
 
-## Creating virtual enviroment and installing Django
+## Creating virtual environment and installing Django
 
-![](https://dl.dropboxusercontent.com/s/5y6fxt0n57jpgbe/2020-11-06_17-57-40.gif)
+![](https://dl.dropboxusercontent.com/s/9jdstpdkk67ubow/2020-11-08_10-43-49.gif)
 
 
 ```console
@@ -41,7 +41,7 @@ pipenv install django
 
 ## Install some other cool stuff
 
-![](https://dl.dropboxusercontent.com/s/hy7rzwp1zfv6tok/2020-11-06_18-00-57.gif)
+![](https://dl.dropboxusercontent.com/s/2fti16wnms1je4l/2020-11-08_10-45-39.gif)
 
 ```console
 pipenv install tqdm
@@ -53,7 +53,7 @@ pipenv install termcolor
 
 ## Entering virtualenv
 
-![](https://dl.dropboxusercontent.com/s/1o084zxqyqmo3ih/2020-11-06_18-02-18.gif)
+![](https://dl.dropboxusercontent.com/s/ppdywfh38g10s71/2020-11-08_10-47-01.gif)
 
 
 ```console
@@ -65,13 +65,13 @@ pipenv shell
 
 ## Make sure to add virtualenv as correct path in Virtual Studio Code
 
-![](https://dl.dropboxusercontent.com/s/nsi8if5crsx01pp/2020-11-06_18-05-07.gif)
+![](https://dl.dropboxusercontent.com/s/dbl88zxo036namv/2020-11-08_11-24-07.gif)
 
 - You can read more about Visual Studio Code Python settings here: https://olav.it/2017/03/04/pipenv-visual-studio-code/
 
 ## Check that Django is installed correctly
 
-![](https://dl.dropboxusercontent.com/s/w0xpv7jkinnq00d/2020-11-06_18-07-30.gif)
+![](https://dl.dropboxusercontent.com/s/vgry1xjlaza31wx/2020-11-08_11-43-20.gif)
 
 ```console
 python -m django --version
@@ -351,10 +351,10 @@ from . import serializers, models
 class CompanyList(generics.ListAPIView):
     serializer_class = serializers.CompanySerializer
     queryset = models.Company.objects.all()
- ```
+```
 
 - Read more about views here: https://docs.djangoproject.com/en/3.1/topics/http/views/
- 
+
 ## Add companydata urls to project's urls
 
 ![](https://dl.dropboxusercontent.com/s/qr7wd37diomxgr8/2020-11-07_11-19-08.gif)
