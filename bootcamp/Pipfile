@@ -8,6 +8,11 @@ verify_ssl = true
 [packages]
 dj-database-url = "*"
 django-environ = "*"
+gunicorn = "*"
+django = "*"
+tqdm = "*"
+termcolor = "*"
+django-heroku = "*"
 
 [requires]
 python_version = "3.7"
