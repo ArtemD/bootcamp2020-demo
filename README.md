@@ -2,7 +2,7 @@
 
 This project is part of programming Boot Camp 2020 course.
 
-## Prerequisites
+# Prerequisites
 
 - Visual Studio Code: https://code.visualstudio.com/download
 - Python: https://www.python.org/downloads/
@@ -60,6 +60,8 @@ pipenv install termcolor
 pipenv shell
 ```
 
+:warning: Remember that you need to always make sure that you're working within virtual enviroment before running any ```python manage.py``` commands. :warning: 
+
 - You can read more about pipenv shell here: https://pipenv-fork.readthedocs.io/en/latest/basics.html
 
 
@@ -78,6 +80,8 @@ python -m django --version
 ```
 
 - If you're having issues with Django installation, please look into excellent installation documentation: https://docs.djangoproject.com/en/3.1/topics/install/
+
+# Working with Django
 
 ## Create new Django application
 
@@ -562,7 +566,7 @@ urlpatterns = [
 Create new file in repository root called Procfile (notice, no extension) with following content:
 
 ```
-web: gunicorn bootcamp.wsgi
+web: gunicorn bootcamp.wsgi --log-file - --log-level debug
 ```
 
 - You can dive into Procfile secrets here: https://devcenter.heroku.com/articles/procfile
@@ -730,6 +734,11 @@ venv.bak/
 # mkdocs documentation
 /site
 
+# Visual Studio Code related files
+.vscode/
+*.code-workspace
+.history/
+
 # mypy
 .mypy_cache/
 .dmypy.json
@@ -743,7 +752,6 @@ dmypy.json
 
 # Cython debug symbols
 cython_debug/
-
 ```
 
 - You can read more about gitignore files here: https://www.pluralsight.com/guides/how-to-use-gitignore-file
@@ -758,6 +766,8 @@ git add .
 git commit -m "Initial commit"
 ```
 
+# Publishing your code to Heroku cloud service
+
 ## Create Heroku instance
 
 ![](https://dl.dropboxusercontent.com/s/pardbzfpydpa9sv/2020-11-07_11-49-13.gif)
@@ -770,7 +780,26 @@ heroku create
 
 - You can learn more about creating apps using heroku cli here: https://devcenter.heroku.com/articles/creating-apps
 
-# Set correct buildpack for our project
+## Move Pipfile and Pipfile.lock to bootcamp directory
+
+![](https://dl.dropboxusercontent.com/s/gyoor7vyell4322/2020-11-08_20-46-02.gif)
+
+```console
+# Run exit command only if you are already within pipenv shell
+exit
+pipenv --rm
+mv Pipfile* bootcamp/
+pipenv install
+pipenv shell
+```
+
+:warning: Using commands above we're destroying virtual enviroment we have created and we re-create it under bootcamp directory.  This is done for following reasons :warning:
+
+- We created virtual enviroment only for django, but we couldn't place Pipfile and Pipfile.lock in directory that didn't exist (we need ```pipenv install django``` in order to run ```django-admin createproject bootcamp```).
+- Heroku expects Pipfile within Django project directory.
+- In our BootCamp course we'll have different projects in the parent folder so it makes sense that django specific Pipfile and Pipfile.lock are placed in the bootcamp directory.
+
+## Set correct buildpack for our project
 
 ![](https://dl.dropboxusercontent.com/s/wrlbzjbrcui90on/2020-11-07_11-59-49.gif)
 
@@ -788,19 +817,28 @@ Make sure to run this command in the root folter (same folder where there is boo
 
 ```console
 git push
-git push heroku main
+git push heroku main:master
 # Prey and cross your fingers!
 ```
 
+:warning: Replace main with the name of your branch if your branch is not named "main". :warning:
+
 Now you should be able to see your new shiney web app url: https://dl.dropboxusercontent.com/s/ohn0ux5jjs22952/Code_2020-11-03_22-43-18.png
+
+- You can read more about using Git with Heroku here: https://devcenter.heroku.com/articles/git
 
 ## Create a free account and initialize a free database
 
-Register a free account over at elephantsql.com
+Register a free account over at [elephantsql.com](https://customer.elephantsql.com/signup)
 
-![Setting up SQL]( https://dl.dropboxusercontent.com/s/ccfd0aiisrg2988/2020-11-05_20-40-07.gif "Setting up SQL")
+![](https://dl.dropboxusercontent.com/s/rcpxxe8x0loaek0/2020-11-08_20-57-24.gif)
+
+- You can learn more about PostgreSQL here: http://postgresguide.com/
+- You can see how PostgreSQL compares to other databases here: https://www.digitalocean.com/community/tutorials/sqlite-vs-mysql-vs-postgresql-a-comparison-of-relational-database-management-systems
 
 ## Connecting to Heroku database
+
+![](https://dl.dropboxusercontent.com/s/etx3a6761aykrvj/2020-11-08_21-42-20.gif)
 
 ```console
 pipenv install dj-database-url
@@ -811,21 +849,90 @@ Then add the following to the bottom of settings.py:
 ```python
 # Adding support for database urls
 import dj_database_url
+import os
 
-DATABASES['default'] = dj_database_url.config(f'postgres://amvmzgrd:PASSWORD@rogue.db.elephantsql.com:5432/amvmzgrd', conn_max_age=600, ssl_require=True)
-#DATABASES['default'] = dj_database_url.config(f'sqlite:///{BASE_DIR}/db.sqlite3')
+DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
+
+if (os.environ.get('DB_URL')):
+    DATABASES['default'] = dj_database_url.parse(os.environ.get('DB_URL'))
+else:
+    DATABASES['default'] = dj_database_url.parse(f'sqlite:///{BASE_DIR}/db.sqlite3')
 ```
 
-Make sure to use database URL from EelephantSQL
+Make sure to use database URL from EelephantSQL. You can use "copy database URL" icon found near the URL itself (see screenshot below):
+
+![](https://dl.dropboxusercontent.com/s/is1sayt9ai92zif/brave_2020-11-08_20-58-42.png)
+
+## Setting correct PostgreSQL credentials in a secure manner
+
+![](https://dl.dropboxusercontent.com/s/yynia9pvqrohzoh/2020-11-08_21-44-33.gif)
+
+:warning: Please note that your PostgreSQL URL will differ from mine as it's unique for every single user, host and so on. :warning:
+
+```python
+heroku config:set DB_URL='postgres://cfzfsdrn:2MHu9Uv8BHdZD3CKP7HsZhXdkgUWt6Wg@balarama.db.elephantsql.com:5432/cfzfsdrn'
+```
 
 ## Pushing to Heroku
 
-Now with PostgreSQL database connection added create migrations, run migrate and push to heroku. In addition to this you have to create superuser again.
+![](https://dl.dropboxusercontent.com/s/7r1jbbcnlw6yk43/2020-11-08_21-15-35.gif)
 
 ```console
-python manage.py makemigrations && python manage.py migrate
-python manage.py createsuperuser
-git add *
-git commit -avm 'PostgreSQL enabled Django'
-git push heroku
+git add ../
+git commit -m "Added support for new database"
+git push heroku main:master
 ```
+
+## Creating PostgreSQL database structure and populating it with data
+
+![](https://dl.dropboxusercontent.com/s/qy1wdnjcqy46sk0/2020-11-08_21-54-37.gif)
+
+```console
+export DB_URL='postgres://cfzfsdrn:2MHu9Uv8BHdZD3CKP7HsZhXdkgUWt6Wg@balarama.db.elephantsql.com:5432/cfzfsdrn'
+python manage.py migrate
+python manage.py createsuperuser
+python manage.py csv2db
+unset DB_URL
+```
+
+Commands listed above achieve following:
+
+- Switch to using production SQL server (by setting DB_URL variable locally)
+- Create database structure based on our models
+- Create admin user
+- Run csv2db and populate database with data from CSV file (notice that I pressed Ctrl+C since I didn't want to wait for all data to be processed)
+- Destroy local variable using unset so Django will revert to using SQLite
+
+You can read more about working with variables in terminal here: [https://linuxize.com/post/how-to-set-and-list-environment-variables-in-linux/](https://linuxize.com/post/how-to-set-and-list-environment-variables-in-linux/)
+
+## Push PostgreSQL enabled version of our application to Heroku
+
+![](https://dl.dropboxusercontent.com/s/8faxiir4jrsa65y/2020-11-08_22-04-51.gif)
+
+```console
+git add ../
+git commit -m 'PostgreSQL enabled Django'
+git push heroku main:master
+```
+
+## Make sure that it works
+
+![](https://dl.dropboxusercontent.com/s/5g9rb1bj8qz69lm/2020-11-08_22-07-08.gif)
+
+# Publishing your code on GitHub & setting up CI
+
+## Creating your private repository
+
+![](https://dl.dropboxusercontent.com/s/7fojqhoem8za2n5/2020-11-08_22-12-21.gif)
+
+- You can read more about using Git and GitHub over here: https://www.freecodecamp.org/news/the-beginners-guide-to-git-github/
+
+## Setting up continues integration over at Heroku
+
+![](https://dl.dropboxusercontent.com/s/fr4mxzsp5c97tzy/2020-11-08_22-20-18.gif)
+
+```console
+heroku info
+```
+
+Make sure to select repository in Heroku which you previously created.
