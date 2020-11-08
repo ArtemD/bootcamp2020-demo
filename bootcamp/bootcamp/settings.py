@@ -128,15 +128,7 @@ django_heroku.settings(locals())
 
 
 import dj_database_url
-
-"""
 # Adding support for database urls
 
-import os
-
-if 'DBPASS' in os.environ:
-    DBPASS = os.environ['DBPASS']
-    DATABASES['default'] = dj_database_url.config(default=f'postgres://amvmzgrd:{DBPASS}@rogue.db.elephantsql.com:5432/amvmzgrd', conn_max_age=600, ssl_require=True)
-else:
-"""
+#DATABASES['default'] = dj_database_url.config(default=f'postgres://USER:PASS@HOST:PORT/DB', conn_max_age=600, ssl_require=True)
 DATABASES['default'] = dj_database_url.config(default=f'sqlite:///{BASE_DIR}/db.sqlite3')
