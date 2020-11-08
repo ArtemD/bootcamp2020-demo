@@ -16,7 +16,7 @@ class Command(BaseCommand):
         
         cprint(f'\nProcessing CSV file, grab a coffee!', 'green', attrs=['reverse'])
 
-        num_lines = sum(1 for line in open('R:\prhdata.csv'))
+        num_lines = sum(1 for line in open('prhdata.csv'))
         with tqdm(total=num_lines) as pbar:
             with open('prhdata.csv', encoding='utf-8') as csv_file:
                 csv_reader = csv.reader(csv_file, delimiter=';')

@@ -130,7 +130,9 @@ django_heroku.settings(locals())
 import dj_database_url
 import os
 
+DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
+
 if (os.environ.get('DB_URL')):
-    DATABASES['default'] = dj_database_url.config(os.environ.get('DB_URL'), conn_max_age=600, ssl_require=True)
+    DATABASES['default'] = dj_database_url.parse(os.environ.get('DB_URL'))
 else:
-    DATABASES['default'] = dj_database_url.config(f'sqlite:///{BASE_DIR}/db.sqlite3')
+    DATABASES['default'] = dj_database_url.parse(f'sqlite:///{BASE_DIR}/db.sqlite3')
