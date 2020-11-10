@@ -143,3 +143,13 @@ if (os.environ.get('DB_URL')):
     DATABASES['default'] = dj_database_url.parse(os.environ.get('DB_URL'))
 else:
     DATABASES['default'] = dj_database_url.parse(f'sqlite:///{BASE_DIR}/db.sqlite3')
+
+# Setup cache on Heroku only
+# Remember to run: python manage.py createcachetable
+if os.environ.get('DB_URL'):
+    CACHES = {
+        'default': {
+            'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
+            'LOCATION': 'tmp_cache',
+        }
+    }
