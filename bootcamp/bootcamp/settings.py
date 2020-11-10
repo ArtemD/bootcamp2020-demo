@@ -172,10 +172,3 @@ if os.environ.get('DB_URL'):
             }
         }
     }
-
-    MIDDLEWARE += (
-        'django.middleware.cache.UpdateCacheMiddleware',
-        'django.middleware.common.CommonMiddleware',
-        'django.middleware.cache.FetchFromCacheMiddleware',
-    )
-    CACHE_MIDDLEWARE_SECONDS = 3600
