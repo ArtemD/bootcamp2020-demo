@@ -156,7 +156,7 @@ if os.environ.get('DB_URL'):
             'LOCATION': 'tmp_cache',
         }
     }
-    MIDDLEWARE_CLASSES += (
+    MIDDLEWARE += (
         'django.middleware.cache.UpdateCacheMiddleware',
         'django.middleware.common.CommonMiddleware',
         'django.middleware.cache.FetchFromCacheMiddleware',
