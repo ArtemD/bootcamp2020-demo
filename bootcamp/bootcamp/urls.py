@@ -22,10 +22,11 @@ from django.urls import path, include
 import datatablesapi
 import prhapi
 from interface.views import index
+from django.views.decorators.cache import cache_page
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api', include('datatablesapi.urls')),
-    path('prhapi', include('prhapi.urls')),
-    path('', index),
+    path('api', cache_page(60 * 60)(include('datatablesapi.urls'))),
+    path('prhapi', cache_page(60 * 60)(include('prhapi.urls'))),
+    path('', cache_page(60 * 60)(index)),
 ]
