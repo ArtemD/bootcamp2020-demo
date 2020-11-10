@@ -50,10 +50,13 @@ $(document).ready(function() {
             { "data": "address" },
             { "data": "postcode" }
         ],
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'excel', 'pdf'
+        ],
         searching: true,
         processing: true,
         serverSide: true,
-        stateSave: true,
         ajax: "/api/"
     });
 });
