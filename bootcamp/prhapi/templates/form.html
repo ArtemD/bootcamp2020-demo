@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <title>Testing PRH API</title>
+    </head>
+
+    <body>
+        <h1>Give me a business id and you shall know a lot more</h1>
+        <form action="/prhapi/" method="post">
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" value="Submit">
+        </form>
+
+        {% if info %}
+            <h2>Found following info</h2>
+            <pre>{{ info }}</pre>
+        {% endif %}
+    </body>
+</html>

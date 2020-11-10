@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'companydata',
     'interface',
     'datatablesapi',
+    'prhapi',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

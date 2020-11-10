@@ -20,10 +20,12 @@ from django.urls import path, include
 #import companydata
 
 import datatablesapi
+import prhapi
 from interface.views import index
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api', include('datatablesapi.urls')),
+    path('prhapi', include('prhapi.urls')),
     path('', index),
 ]

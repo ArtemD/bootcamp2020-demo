@@ -17,6 +17,7 @@ djangorestframework = "*"
 django-datatables-view = "*"
 django-clear-cache = "*"
 django-bmemcached = "*"
+requests = "*"
 
 [requires]
 python_version = "3.7"
