@@ -149,8 +149,34 @@ else:
 # CACHE_MIDDLEWARE_SECONDS tells server time that cache should be considered valid
 # If you want to clear cache run: heroku run python manage.py clear_cache
 if os.environ.get('DB_URL'):
-    import herokuify
-    CACHES = herokuify.get_cache_config()
+    def get_cache():
+        try:
+            servers = os.environ['MEMCACHIER_SERVERS']
+            username = os.environ['MEMCACHIER_USERNAME']
+            password = os.environ['MEMCACHIER_PASSWORD']
+            return {
+            'default': {
+                'BACKEND': 'django_bmemcached.memcached.BMemcached',
+                # TIMEOUT is not the connection timeout! It's the default expiration
+                # timeout that should be applied to keys! Setting it to `None`
+                # disables expiration.
+                'TIMEOUT': None,
+                'LOCATION': servers,
+                'OPTIONS': {
+                'username': username,
+                'password': password,
+                }
+            }
+            }
+        except:
+            return {
+            'default': {
+                'BACKEND': 'django.core.cache.backends.locmem.LocMemCache'
+                }
+            }
+
+    CACHES = get_cache()
+
     MIDDLEWARE += (
         'django.middleware.cache.UpdateCacheMiddleware',
         'django.middleware.common.CommonMiddleware',
