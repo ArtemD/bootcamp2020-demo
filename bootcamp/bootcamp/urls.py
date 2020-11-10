@@ -15,11 +15,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-import companydata
+
+# Not needed as we're using datatablesapi now
+#import companydata
+
+import datatablesapi
 from interface.views import index
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api', include('companydata.urls')),
+    path('api', include('datatablesapi.urls')),
     path('', index),
 ]

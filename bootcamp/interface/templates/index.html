@@ -38,12 +38,7 @@
 
 <script>
 $(document).ready(function() {
-    $('#companies').DataTable( {
-        "ajax": {
-            "serverSide": true,
-            "url": "/api/?format=json",
-            "dataSrc": ""
-        },
+    var dt_table = $('#companies').dataTable({
         "pageLength": 20,
         "columns": [
             { "data": "name" },
@@ -54,9 +49,14 @@ $(document).ready(function() {
             { "data": "city" },
             { "data": "address" },
             { "data": "postcode" }
-        ]
-    } );
-} );
+        ],
+        searching: true,
+        processing: true,
+        serverSide: true,
+        stateSave: true,
+        ajax: "/api/"
+    });
+});
 </script>
 
 </body>

@@ -14,6 +14,7 @@ tqdm = "*"
 termcolor = "*"
 django-heroku = "*"
 djangorestframework = "*"
+django-datatables-view = "*"
 
 [requires]
 python_version = "3.7"
