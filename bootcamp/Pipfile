@@ -15,6 +15,7 @@ termcolor = "*"
 django-heroku = "*"
 djangorestframework = "*"
 django-datatables-view = "*"
+django-clear-cache = "*"
 
 [requires]
 python_version = "3.7"

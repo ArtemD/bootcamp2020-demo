@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'clear_cache',
 ]
 
 MIDDLEWARE = [
@@ -145,7 +146,9 @@ else:
     DATABASES['default'] = dj_database_url.parse(f'sqlite:///{BASE_DIR}/db.sqlite3')
 
 # Setup cache on Heroku only
-# Remember to run: python manage.py createcachetable
+# Remember to run: heroku run python manage.py createcachetable
+# CACHE_MIDDLEWARE_SECONDS tells server time that cache should be considered valid
+# If you want to clear cache run: heroku run python manage.py clear_cache
 if os.environ.get('DB_URL'):
     CACHES = {
         'default': {
@@ -153,3 +156,9 @@ if os.environ.get('DB_URL'):
             'LOCATION': 'tmp_cache',
         }
     }
+    MIDDLEWARE_CLASSES += (
+        'django.middleware.cache.UpdateCacheMiddleware',
+        'django.middleware.common.CommonMiddleware',
+        'django.middleware.cache.FetchFromCacheMiddleware',
+    )
+    CACHE_MIDDLEWARE_SECONDS = 3600

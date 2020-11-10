@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "1040d79cb78573882fd925f4b62c1370d7c758c58aace737d19b0bf2f4c27c96"
+            "sha256": "33c3398c2955b2b781c841b0f219f4d63bb1a2805341b344b1e6ec400cda09ee"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -39,6 +39,13 @@
             ],
             "index": "pypi",
             "version": "==3.1.3"
+        },
+        "django-clear-cache": {
+            "hashes": [
+                "sha256:fc9d27d6d7dd143917393484236bdf66a109d99bc64a4418cdf5a1127356d766"
+            ],
+            "index": "pypi",
+            "version": "==0.3"
         },
         "django-datatables-view": {
             "hashes": [
