@@ -4,9 +4,6 @@ from django.shortcuts import render
 from .forms import CompanyForm
 from .prhlib import get_company_info
 
-from django.views.decorators.csrf import csrf_exempt
-
-@csrf_exempt
 def get_business_id(request):
     info = None
     if request.method == 'POST':
