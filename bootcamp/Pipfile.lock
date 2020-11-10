@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "33c3398c2955b2b781c841b0f219f4d63bb1a2805341b344b1e6ec400cda09ee"
+            "sha256": "2698b9da60c8e46dd04ca8dc7039ebe1dccdeee8b3182aea2f9fa6a82e9e9cbe"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -39,6 +39,13 @@
             ],
             "index": "pypi",
             "version": "==3.1.3"
+        },
+        "django-bmemcached": {
+            "hashes": [
+                "sha256:4e4b7d97216dbae331c1de10e699ca22804b94ec3a90d2762dd5d146e6986a8a"
+            ],
+            "index": "pypi",
+            "version": "==0.3.0"
         },
         "django-clear-cache": {
             "hashes": [
@@ -108,12 +115,26 @@
             "markers": "python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3'",
             "version": "==2.8.6"
         },
+        "python-binary-memcached": {
+            "hashes": [
+                "sha256:f91c3d79d022121c22ef733e9beee86e0598e29ffec67401c68cece1ba7f036a"
+            ],
+            "version": "==0.30.1"
+        },
         "pytz": {
             "hashes": [
                 "sha256:3e6b7dd2d1e0a59084bcee14a17af60c5c562cdc16d828e8eba2e683d3a7e268",
                 "sha256:5c55e189b682d420be27c6995ba6edce0c0a77dd67bfbe2ae6607134d5851ffd"
             ],
             "version": "==2020.4"
+        },
+        "six": {
+            "hashes": [
+                "sha256:30639c035cdb23534cd4aa2dd52c3bf48f06e5f4a941509c8bafd8ce11080259",
+                "sha256:8b74bedcbbbaca38ff6d7491d76f2b06b3592611af620f8426e82dddb04a5ced"
+            ],
+            "markers": "python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3'",
+            "version": "==1.15.0"
         },
         "sqlparse": {
             "hashes": [
@@ -137,6 +158,12 @@
             ],
             "index": "pypi",
             "version": "==4.51.0"
+        },
+        "uhashring": {
+            "hashes": [
+                "sha256:f7304ca2ff763bbf1e2f8a78f21131721811619c5841de4f8c98063344906931"
+            ],
+            "version": "==1.2"
         },
         "whitenoise": {
             "hashes": [
