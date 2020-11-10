@@ -146,16 +146,11 @@ else:
     DATABASES['default'] = dj_database_url.parse(f'sqlite:///{BASE_DIR}/db.sqlite3')
 
 # Setup cache on Heroku only
-# Remember to run: heroku run python manage.py createcachetable
 # CACHE_MIDDLEWARE_SECONDS tells server time that cache should be considered valid
 # If you want to clear cache run: heroku run python manage.py clear_cache
 if os.environ.get('DB_URL'):
-    CACHES = {
-        'default': {
-            'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
-            'LOCATION': 'tmp_cache',
-        }
-    }
+    import herokuify
+    CACHES = herokuify.get_cache_config()
     MIDDLEWARE += (
         'django.middleware.cache.UpdateCacheMiddleware',
         'django.middleware.common.CommonMiddleware',
