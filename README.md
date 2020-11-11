@@ -996,7 +996,7 @@ git push heroku main:master
 ![](https://dl.dropboxusercontent.com/s/fr4mxzsp5c97tzy/2020-11-08_22-20-18.gif)
 
 ```console
-heroku info
+heroku info 
 ```
 
 Make sure to select repository in Heroku which you previously created.
