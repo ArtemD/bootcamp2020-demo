@@ -131,7 +131,7 @@ pipenv shell
 
 ## Make sure to add virtualenv as correct path in Virtual Studio Code
 
-![](https://dl.dropboxusercontent.com/s/dbl88zxo036namv/2020-11-08_11-24-07.gif)
+![](https://dl.dropboxusercontent.com/s/01hssf8kqgc2nuc/2020-11-11_20-21-27.gif)
 
 - You can read more about Visual Studio Code Python settings here: https://olav.it/2017/03/04/pipenv-visual-studio-code/
 
