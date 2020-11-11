@@ -7,5 +7,5 @@ class CompanyJson(BaseDatatableView):
     def filter_queryset(self, qs):
         search = self.request.GET.get('search[value]', None)
         if search:
-            qs = qs.filter(name__istartswith=search)
+            qs = qs.filter(name__icontains=search)
         return qs
