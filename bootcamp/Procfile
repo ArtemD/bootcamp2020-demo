@@ -1,1 +1,1 @@
-web: gunicorn booztcamp.wsgi --log-file - --log-level debug
+web: gunicorn bootcamp.wsgi --log-file - --log-level debug
